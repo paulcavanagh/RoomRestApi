@@ -346,8 +346,9 @@ public class RoomsApiIntegrationTest {
 
         restTemplate.delete(BASE_URL + "/" + room.getId(), room);
         response = restTemplate.getForEntity(BASE_URL + "/" + room.getId(), Room.class);
-
-        assertThat(response.getBody().getName(), equalTo(null));
+        
+         assertThat(response.getStatusCode(), equalTo(HttpStatus.NO_CONTENT));
+        //assertThat(response.getBody().getName(), equalTo(null));
     }
 
     @Test
